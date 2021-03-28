@@ -54,13 +54,10 @@ const lmic_pinmap lmic_pins = {
 };
 
 void do_send(osjob_t* j){
-    // float -> int
-    uint16_t payloadCount = LMIC_f2sflt16(counter);
-    // int -> bytes
-    byte countLow = lowByte(payloadCount);
-    byte countHigh = highByte(payloadCount);
-    payload[0] = countLow;
-    payload[1] = countHigh;
+    byte payload[2];
+    payload[0] = highByte(counter);
+    payload[1] = lowByte(counter);
+
 
     // Check if there is not a current TX/RX job running
     if (LMIC.opmode & OP_TXRXPEND) {
