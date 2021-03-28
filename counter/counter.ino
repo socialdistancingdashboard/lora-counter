@@ -61,8 +61,6 @@ void do_send(osjob_t* j){
     byte countHigh = highByte(payloadCount);
     payload[0] = countLow;
     payload[1] = countHigh;
-    // Payload to send (uplink)
-    static uint8_t message[] = "Hello OTAA!";
 
     // Check if there is not a current TX/RX job running
     if (LMIC.opmode & OP_TXRXPEND) {
