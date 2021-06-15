@@ -178,7 +178,7 @@ void setup() {
 
   // Set data rate and transmit power for uplink (note: txpow seems to be ignored by the library)
   //LMIC_setDrTxpow(DR_SF11,14);
-  LMIC_setDrTxpow(DR_SF9,14);
+  LMIC_setDrTxpow(DR_SF7,14);
 
   // Start job
   do_send(&sendjob);     // Will fire up also the join
