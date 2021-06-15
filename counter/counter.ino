@@ -9,9 +9,9 @@
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-const int buttonPin1 = 34;
-const int buttonPin2 = 35;
-const int buttonResetPin = 14;
+const int buttonPin1 =  12;
+const int buttonPin2 = 14;
+const int buttonResetPin = 13;
 int buttonState1 = 0;
 int buttonState2 = 0;         
 int buttonResetState = 0; 
