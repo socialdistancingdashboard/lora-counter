@@ -92,9 +92,7 @@ void onEvent (ev_t ev) {
             }
             // Schedule next transmission
             os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
-            digitalWrite(LEDPIN, LOW);            
-            // Schedule next transmission
-            os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
+            digitalWrite(LEDPIN, LOW);      
             break;
         case EV_JOINING:
             Serial.println(F("EV_JOINING: -> Joining..."));
