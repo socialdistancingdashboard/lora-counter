@@ -18,7 +18,7 @@ int buttonResetState = 0;
 
 char TTN_response[30];
 
-int counter = START;
+volatile int counter = START;
 
 // This EUI must be in little-endian format, so least-significant-byte
 // first. When copying an EUI from ttnctl output, this means to reverse
