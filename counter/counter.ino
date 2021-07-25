@@ -25,17 +25,17 @@ volatile int counter = START;
 // the bytes.
 
 // Copy the value from Device EUI from the TTN console in LSB mode.
-static const u1_t PROGMEM DEVEUI[8]= {  };
+static const u1_t PROGMEM DEVEUI[8]= { };
 void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
 
 // Copy the value from Application EUI from the TTN console in LSB mode
-static const u1_t PROGMEM APPEUI[8]= {  };
+static const u1_t PROGMEM APPEUI[8]= { };
 void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI, 8);}
 
 // This key should be in big endian format (or, since it is not really a
 // number but a block of memory, endianness does not really apply). In
 // practice, a key taken from ttnctl can be copied as-is. Anyway its in MSB mode.
-static const u1_t PROGMEM APPKEY[16] = {  };
+static const u1_t PROGMEM APPKEY[16] = { };
 void os_getDevKey (u1_t* buf) { memcpy_P(buf, APPKEY, 16);}
 
 static uint8_t payload[5];
@@ -43,7 +43,7 @@ static osjob_t sendjob;
 
 // Schedule TX every this many seconds (might become longer due to duty
 // cycle limitations).
-const unsigned TX_INTERVAL = 180;
+const unsigned TX_INTERVAL = 300;
 
 // Pin mapping
 const lmic_pinmap lmic_pins = {
@@ -92,7 +92,7 @@ void onEvent (ev_t ev) {
             }
             // Schedule next transmission
             os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
-            digitalWrite(LEDPIN, LOW);      
+            digitalWrite(LEDPIN, LOW);          
             break;
         case EV_JOINING:
             Serial.println(F("EV_JOINING: -> Joining..."));
@@ -176,7 +176,7 @@ void setup() {
 
   // Set data rate and transmit power for uplink (note: txpow seems to be ignored by the library)
   //LMIC_setDrTxpow(DR_SF11,14);
-  LMIC_setDrTxpow(DR_SF7,14);
+  LMIC_setDrTxpow(DR_SF7, 14);
 
   // Start job
   do_send(&sendjob);     // Will fire up also the join
